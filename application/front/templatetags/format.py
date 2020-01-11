@@ -7,3 +7,8 @@ register = template.Library()
 def phone_format(value):
     value = value.replace(' ', '').replace('-', '')
     return f'{value[:-10]} ({value[-10:-7]}) {value[-7:-4]}-{value[-4:-2]}-{value[-2:]}'
+
+@register.filter
+def name_format(value):
+    value = value[:value.find(' ')]
+    return value

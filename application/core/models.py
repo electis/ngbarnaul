@@ -77,7 +77,7 @@ class Minister(models.Model):
     position = models.SmallIntegerField(default=10)
 
     def __str__(self):
-        return self.name
+        return f'{self.position} - {self.name}'
 
 
 class Contact(models.Model):

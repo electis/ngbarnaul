@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load phone_format %}
+{% load format %}
 {% block content %}
     <section id="header-center-carousel-single" class="pt-150 pb-150 -dark text-center">
         <div class="carousel-single-nav owl-drag">
@@ -241,158 +241,12 @@
                                     <h3 class="mt-20 mb-0"><strong>{{ minister.name }}</strong></h3>
                                     <h4>{{ minister.function }}</h4>
                                     <p>{{ minister.about }}</p>
-                                    <a href="tel:{{ minister.phone }}">{{ minister.phone|phone_format }} {{ minister.short_name }}</a>
+                                    <a href="tel:{{ minister.phone }}">{{ minister.phone|phone_format }}
+                                        {% if minister.short_name %}{{ minister.short_name }}{% else %}
+                                            {{ minister.name|name_format }}{% endif %}</a>
                                 </div>
                             </div>
                         {% endfor %}
-                        <div class="card item gallery-style-4">
-                            <div class="card-block-hover">
-                                <div class="card-img-overlay-center card-img-overlay-bg">
-                                    <ul class="social-list">
-                                        <li><a href="#"><i class="icon-twitter icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-linkedin icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-google-plus icon-size-m"></i></a></li>
-                                    </ul>
-                                </div>
-                                <img class="card-img_ img-circle" src="images/s-pastor.jpeg"
-                                     srcset="images/s-pastor.jpeg 2x"
-                                     alt="team">
-                            </div>
-                            <div class="card-block">
-                                <h3 class="mt-20 mb-0"><strong>Артём Торопчин</strong></h3>
-                                <h4>Старший пастор церкви</h4>
-                                <p>Благодаря его служения сотни людей изменили свой образ жизни и вышли на ее
-                                    качественный уровень. Эксперт в вопросе лидерства, семьи, предназначения.</p>
-                                <a href="tel:+79132189085">8 (913) 218-90-85 Пастор Артём</a>
-                            </div>
-                        </div>
-                        <div class="card item gallery-style-4">
-                            <div class="card-block-hover">
-                                <div class="card-img-overlay-center card-img-overlay-bg">
-                                    <ul class="social-list">
-                                        <li><a href="#"><i class="icon-twitter icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-linkedin icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-google-plus icon-size-m"></i></a></li>
-                                    </ul>
-                                </div>
-                                <img class="card-img1 img-circle" src="images/s-anast.jpeg"
-                                     srcset="images/s-anast.jpeg 2x"
-                                     alt="team">
-                            </div>
-                            <div class="card-block">
-                                <h3 class="mt-20 mb-0"><strong>Анастасия Торопчина</strong></h3>
-                                <h4>Семейный психолог</h4>
-                                <p>Огромный опыт работы с семьями на грани развода. Специалист по воспитанию детей.
-                                    Обаятельна и всегда позитивна.</p>
-                                <a href="tel:+79132340978">8 (913) 234-09-78 Анастасия</a>
-                            </div>
-                        </div>
-                        <div class="card item gallery-style-4">
-                            <div class="card-block-hover">
-                                <div class="card-img-overlay-center card-img-overlay-bg">
-                                    <ul class="social-list">
-                                        <li><a href="#"><i class="icon-twitter icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-linkedin icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-google-plus icon-size-m"></i></a></li>
-                                    </ul>
-                                </div>
-                                <img class="img-circle" src="images/s-elena.jpeg" srcset="images/s-elena.jpeg 2x"
-                                     alt="team">
-                            </div>
-                            <div class="card-block">
-                                <h3 class="mt-20 mb-0"><strong>Елена Рунова</strong></h3>
-                                <h4>Администратор и юрист церкви</h4>
-                                <p>На профессиональном уровне с координирует вас по вашему запросу. С огромным желанием
-                                    ответить на все ваши вопросы!</p>
-                                <a href="tel:+79609594332">8 (960) 959-43-32 Елена</a>
-                            </div>
-                        </div>
-                        <div class="card item gallery-style-4">
-                            <div class="card-block-hover">
-                                <div class="card-img-overlay-center card-img-overlay-bg">
-                                    <ul class="social-list">
-                                        <li><a href="#"><i class="icon-twitter icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-linkedin icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-google-plus icon-size-m"></i></a></li>
-                                    </ul>
-                                </div>
-                                <img class="img-circle" src="images/s-vadim2.jpg" srcset="images/s-vadim2.jpg 2x"
-                                     alt="team">
-                            </div>
-                            <div class="card-block">
-                                <h3 class="mt-20 mb-0"><strong>Вадим Полещук</strong></h3>
-                                <h4>Координатор социального служения</h4>
-                                <p>Вы сможете получить подробную информацию о том как решить проблемы с нарко и
-                                    алкозависмостью. Огромный опыт работы в сфере реабилитации.</p>
-                                <a href="tel:+79831855031">8 (983) 185-50-31 Вадим</a>
-                            </div>
-                        </div>
-                        <div class="card item gallery-style-4">
-                            <div class="card-block-hover">
-                                <div class="card-img-overlay-center card-img-overlay-bg">
-                                    <ul class="social-list">
-                                        <li><a href="#"><i class="icon-twitter icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-linkedin icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-google-plus icon-size-m"></i></a></li>
-                                    </ul>
-                                </div>
-                                <img class="img-circle" src="images/s-irina.jpeg" srcset="images/s-irina.jpeg 2x"
-                                     alt="team">
-                            </div>
-                            <div class="card-block">
-                                <h3 class="mt-20 mb-0"><strong>Ирина Милешина</strong></h3>
-                                <h4>Ведущий музыкант церкви</h4>
-                                <p>Обладает сказочным даром вокала. Во время исполнения песен душа расцветает.</p>
-                                <a href="tel:+79130903099">8 (913) 090-30-99 Ирина</a>
-                            </div>
-                        </div>
-                        <div class="card item gallery-style-4">
-                            <div class="card-block-hover">
-                                <div class="card-img-overlay-center card-img-overlay-bg">
-                                    <ul class="social-list">
-                                        <li><a href="#"><i class="icon-twitter icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-linkedin icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-google-plus icon-size-m"></i></a></li>
-                                    </ul>
-                                </div>
-                                <img class="img-circle" src="images/s-oksana.jpeg" srcset="images/s-oksana.jpeg 2x"
-                                     alt="team">
-                            </div>
-                            <div class="card-block">
-                                <h3 class="mt-20 mb-0"><strong>Оксана Шувалова</strong></h3>
-                                <h4>Детский специалист</h4>
-                                <p>Возглавляет Воскресный Детский Досуговый Центр церкви. Очень добрая и дружелюбная, за
-                                    что имеет взаимную любовь наших детей.</p>
-                                <a href="tel:+79619988568">8 (961) 998-85-68 Оксана</a>
-                            </div>
-                        </div>
-                        <div class="card item gallery-style-4">
-                            <div class="card-block-hover">
-                                <div class="card-img-overlay-center card-img-overlay-bg">
-                                    <ul class="social-list">
-                                        <li><a href="#"><i class="icon-twitter icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-linkedin icon-size-m"></i></a></li>
-                                        <li><a href="#"><i class="icon-google-plus icon-size-m"></i></a></li>
-                                    </ul>
-                                </div>
-                                <img class="img-circle" src="images/s-andr.jpeg" srcset="images/s-andr.jpeg 2x"
-                                     alt="team">
-                            </div>
-                            <div class="card-block">
-                                <h3 class="mt-20 mb-0"><strong>Андрей Есин</strong></h3>
-                                <h4>Эксперт Медиа пространства</h4>
-                                <p>Профессиональный программист с большим опытом работы. Всегда придёт на помощь и решит
-                                    любую техническую проблему.</p>
-                                <a href="tel:+79833839583">8 (983) 383-95-83 Андрей</a>
-                            </div>
-                        </div>
                         <div class="card item gallery-style-4">
                             <div class="card-block-hover">
                                 <div class="card-img-overlay-center card-img-overlay-bg">
