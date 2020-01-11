@@ -1,0 +1,23 @@
+#nav-center-logo-menu-btn .nav-bg {
+    opacity: 0.7;
+}
+
+#nav-center-logo-menu-btn {
+    background: transparent;
+}
+
+#step-rtl-text-btn-img-half-start {
+    background: #edf8ff;
+}
+
+#step-ltr-img-text-btn-half--0 {
+    background: #edf8ff;
+}
+
+#step-ltr-img-text-btn-half {
+    background: #edf8ff;
+}
+
+#step-ltr-form-img-text-half-end, #step-rtl-text-btn-img-half, #step-rtl-text-list-img-half {
+    background: #edf8ff;
+}

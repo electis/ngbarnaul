@@ -1,0 +1,37 @@
+#nav-center-logo-menu-btn .nav-bg {
+    opacity: 0.7;
+}
+
+#nav-center-logo-menu-btn {
+    background: transparent;
+}
+
+#header-center-carousel-single {
+    /*background: linear-gradient(135deg, #ff2c76, #07bcf7);*/
+    /*background: -webkit-linear-gradient(315deg, #ff2c76, #07bcf7);*/
+}
+
+#header-center-carousel-single .bg {
+    background-image: url('../images/banner2.jpg');
+    background-repeat: no-repeat;
+    background-position: 75% 50%;
+    background-size: cover;
+    /*opacity: 0.5;*/
+}
+
+#counter-halfbg-timer .half-container-left {
+    background-image: url('../images/bg-blur-2.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+}
+
+/*#desc-fluid-card-4col {*/
+/*    background: #96d4e9;*/
+/*}*/
+
+#gallery-carousel-2 {
+    background: #111111;
+}
+
