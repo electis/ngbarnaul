@@ -151,7 +151,7 @@ var nightOpts = [{"featureType":"all","elementType":"labels.text.fill","stylers"
 //------------------------------------------------------------------------------------
 //						CONTACT FORM VALIDATION'S SETTINGS
 //------------------------------------------------------------------------------------
-$('#footer-list-form-form').validate({
+$('#form-footer').validate({
     onfocusout: false,
     onkeyup: false,
     rules: {
@@ -170,10 +170,11 @@ $('#footer-list-form-form').validate({
 //								CONTACT FORM SCRIPT
 //------------------------------------------------------------------------------------
 
-$('#footer-list-form-form').submit(function () {
+$('.contact_form').submit(function () {
     // submit the form
     //data area
     var data = [];
+    var ctoken = $(this).find('input').val();
     var $fields = $(this).find('.form-group, div.radio');
     $fields.each(function(indx, el){
         if ($( el ).hasClass('radio')) {
@@ -211,26 +212,30 @@ $('#footer-list-form-form').submit(function () {
                 form.append('file-' + indx + '-' + i, file);
             });
         });
+        var id = this.id;
         form.append('data', JSON.stringify(data));
-        form.append('id', this.id);
-        var action = $(this).attr('action');
+        form.append('id', id);
+        form.append("csrfmiddlewaretoken", ctoken);
+        // var action = $(this).attr('action');
         $.ajax({
-            url: action,
+            url: '/ajax/',
             type: 'POST',
             data: form,
             cache: false,
             contentType: false,
             processData: false,
             success: function () {
-                $('#footer-list-form-form').find('[type=submit]').button('complete');
+                $('#'+id).find('[type=submit]').button('complete').attr('type', 'button').css('background-color', '#337ab7');
+                 // true; //css('background-color', 'red');
             },
             error: function () {
-                $('#footer-list-form-form').find('[type=submit]').button('reset');
+                $('#'+id).find('[type=submit]').button('reset');
             }
         });
     } else {
         //if data was invalidated
     }
+    // $('#'+id).find('[type=submit]').addClass('disabled');
     return false;
 });
 });
