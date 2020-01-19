@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse, HttpResponse
 
-from application.core import models
+from apps.core import models
 
 
 class Index(View):

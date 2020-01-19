@@ -1,7 +1,12 @@
-﻿.idea
+﻿-*
+.idea
 migrations
 *.pyc
 *.log
 *.pem
 *.sqlite3
+*.json
 secret*
+venv
+application/static
+application/media

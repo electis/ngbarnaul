@@ -5,6 +5,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('adminka/', admin.site.urls),
-    path('', include('application.front.urls')),
+    path('', include('apps.front.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
