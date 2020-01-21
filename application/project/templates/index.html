@@ -55,85 +55,29 @@
     <section id="tabs" class="text-center dark">
         <div class="container-fluid">
             <div class="row no-side-pad no-pad">
-                <div class="col-md-3 col-sm-6">
-                    <div class="card light f-nar">
-                        <img src="{% static "images/card-bg-1.jpg" %}" class="card-img" alt="">
-                        <div class="card-img-overlay-center bg-60-l mx-20">
-                            <ul class="tabs-ul-ub">
-                                <li>Болезни</li>
-                                <li>Наследственные, душевные, приобретённые</li>
-                                <li>Более 1000 уже исцелены</li>
-                            </ul>
-                        </div>
-                        <div class="card-img-overlay">
-                            <h2 class="u-b">ПОЛУЧИ СВОЁ ИСЦЕЛЕНИЕ</h2>
-                        </div>
+                {% for card in cards %}
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card light f-nar">
+                            <img src="{{ card.background.url }}" class="card-img" alt="">
+                            <div class="card-img-overlay-center bg-60-l px-20">
+                                <ul class="tabs-ul-ub">
+                                    {% for text in card.text_middle %}
+                                        <li>{{ text }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="card-img-overlay">
+                                <h2 class="u-b">{{ card.text_top }}</h2>
+                            </div>
 
-                        <div class="card-img-overlay-bottom">
-                            <p class="u-b">Облегчи свою жизнь!</p>
-                            <a class="btn btn-primary btn-xs" href="/healing"><span
-                                    class="h4 u-b">Узнать больше</span></a>
+                            <div class="card-img-overlay-bottom">
+                                <p class="u-b">{{ card.text_bottom }}</p>
+                                <a class="btn btn-primary btn-xs" href="/{{ card.url }}"><span
+                                        class="h4 u-b">Узнать больше</span></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="card light f-nar">
-                        <img src="{% static "images/card-bg-2.jpg" %}" class="card-img" alt="">
-                        <div class="card-img-overlay-center bg-60-l px-20">
-                            <ul class="tabs-ul-ub">
-                                <li>Продуктовые пакеты и одежда</li>
-                                <li>3000 людей уже получили поддержку</li>
-                            </ul>
-                        </div>
-                        <div class="card-img-overlay">
-                            <h2 class="u-b">СОЦИАЛЬНАЯ ПОМОЩЬ</h2>
-                        </div>
-                        <div class="card-img-overlay-bottom">
-                            <p class="u-b">Один шаг и Ваша семья накормлена и одета!</p>
-                            <a class="btn btn-primary btn-xs" href="/social"><span
-                                    class="h4 u-b">Узнать больше</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="card light f-nar">
-                        <img src="{% static "images/card-bg-3.jpg" %}" class="card-img" alt="">
-                        <div class="card-img-overlay-center bg-60-l px-20">
-                            <ul class="tabs-ul-ub">
-                                <li>Опытный специалист с практикой 14 лет</li>
-                                <li>Бесплатная консультация</li>
-                                <li>Практично, комфортно и результативно</li>
-                            </ul>
-                        </div>
-                        <div class="card-img-overlay">
-                            <h2 class="u-b">СЕМЕЙНЫЙ ПСИХОЛОГ</h2>
-                        </div>
-                        <div class="card-img-overlay-bottom">
-                            <p class="u-b">Десятки семей решили свои проблемы!</p>
-                            <a class="btn btn-primary btn-xs" href="/psycholog"><span
-                                    class="h4 u-b">Узнать больше</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="card light">
-                        <img src="{% static "images/card-bg-4.jpg" %}" class="card-img" alt="">
-                        <div class="card-img-overlay-center bg-60-l px-20">
-                            <ul class="tabs-ul-ub">
-                                <li>Решение долговых обязательств</li>
-                                <li>Профессиональная консультация</li>
-                                <li>Увеличение бюджета</li>
-                            </ul>
-                        </div>
-                        <div class="card-img-overlay">
-                            <h2 class="u-b">ФИНАНСОВАЯ ПОМОЩЬ</h2>
-                        </div>
-                        <div class="card-img-overlay-bottom">
-                            <p class="u-b">Завершение вашего кризиса!</p>
-                            <a class="btn btn-primary btn-xs" href="/finance"><span class="h4 u-b">Узнать больше</span></a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="bg"></div>

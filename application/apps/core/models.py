@@ -1,4 +1,5 @@
 from pytils import translit
+from django_better_admin_arrayfield.models.fields import ArrayField
 from django.db import models
 
 
@@ -37,13 +38,17 @@ class Counter(models.Model):
 
 
 class Card(models.Model):
-    background = models.CharField(max_length=255, verbose_name="Background", blank=True, default='')
+    class Meta:
+        ordering = ('position',)
+    url = models.CharField(max_length=32, default='')
+    background = models.ImageField(upload_to=get_image_path, null=True, blank=True)
     text_top = models.CharField(max_length=255, blank=True, default='')
-    text_middle = models.TextField(help_text="list", blank=True, default='[]')
+    text_middle = ArrayField(models.CharField(max_length=255, default=''), blank=True)
     text_bottom = models.CharField(max_length=255, blank=True, default='')
-    # button_title = models.CharField(max_length=128, blank=True, default='')
-    button_url = models.CharField(max_length=32, blank=True, default='')
     position = models.SmallIntegerField(default=10)
+
+    def __str__(self):
+        return f'{self.url} - {self.text_top}'
 
 
 class Review(models.Model):

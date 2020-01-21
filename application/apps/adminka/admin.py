@@ -1,9 +1,16 @@
 from django.contrib import admin
 from django.apps import apps
+from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
+from apps.core import models
 
 
-models = apps.get_models()
-for model in models:
+@admin.register(models.Card)
+class CardAdmin(admin.ModelAdmin, DynamicArrayMixin):
+    pass
+
+
+apps_models = apps.get_models()
+for model in apps_models:
     try:
         admin.site.register(model)
     except admin.sites.AlreadyRegistered:
