@@ -69,12 +69,14 @@ class Ajax(View):
                 return HttpResponse(status=400)
             email = ['andrey@ngbarnaul.ru']
             print('Send email', methods[id], data)
-            mail = EmailMultiAlternatives(methods[id], data, settings.EMAIL_HOST_USER, email)
+            html = str('<br>'.join([f"{d.get('name')}: {d.get('value')}" for d in data]))
+            mail = EmailMultiAlternatives(methods[id], html, settings.EMAIL_HOST_USER, email)
             mail.content_subtype = "html"
             try:
                 mail.send(fail_silently=False)
             except Exception as Ex:
                 print(Ex)
+                return HttpResponse(status=400)
             return HttpResponse()
         else:
             print('Method unknown: ', id)
