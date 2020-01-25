@@ -3,6 +3,8 @@ import json
 from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
+from django.core.mail.message import EmailMultiAlternatives
+from django.conf import settings
 
 from apps.core import models
 
@@ -51,6 +53,13 @@ class Ajax(View):
     def post(self, request):
         methods = {
             'form-footer': 'Обратная связь',
+            'form-healing': 'Исцеление - консультация',
+            'form-healing-modal': 'Исцеление - молитва',
+            'form-social': 'Социальная помощь',
+            'form-psycholog': 'Психолог - записаться',
+            'form-psycholog-modal': 'Психолог - видеовыпуск',
+            'form-finance': 'Финансы - записаться',
+            'form-finance-modal': 'Финансы - книга',
         }
         id = request.POST.get('id')
         if id in methods.keys():
@@ -58,6 +67,15 @@ class Ajax(View):
                 data = json.loads(request.POST['data'])
             except:
                 return HttpResponse(status=400)
+            email = ['andrey@ngbarnaul.ru']
             print('Send email', methods[id], data)
+            mail = EmailMultiAlternatives(methods[id], data, settings.EMAIL_HOST_USER, email)
+            mail.content_subtype = "html"
+            try:
+                mail.send(fail_silently=False)
+            except Exception as Ex:
+                print(Ex)
             return HttpResponse()
+        else:
+            print('Method unknown: ', id)
         return HttpResponse(status=400)

@@ -1,53 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Исцеление - Церковь г.Барнаула</title>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
-    <script src="js/fonts.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/icons.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/owl.carousel.css"/>
-    <link rel="stylesheet" href="css/magnific-popup.css"/>
-    <link rel="stylesheet" href="css/custom.css"/>
-    <link rel="stylesheet" href="css/index.css"/>
-    <link rel="stylesheet" href="css/preloader.css"/>
-</head>
-<body class="light-page">
-<div id="preloader">
-    <div class="circles">
-        <div class="bounce1"></div>
-        <div class="bounce2"></div>
-        <div class="bounce3"></div>
-    </div>
-</div>
-<nav id="nav-center-logo-menu-btn" class="navbar dark navbar-fixed-top nav-start-hide-bg" style="">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            <div class="navbar-brand"><a href="/"><img src="images/logo025x.png"
-                                                                 srcset="images/logo05x.png 2x"
-                                                                 alt="NGBarnaul logo" class=""></a></div>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-center">
-                <li><a href="/about"><span>О нас</span></a></li>
-                <li><a href="/#tabs"><span>Разделы</span></a></li>
-                <li><a href="/#reviews"><span>Отзывы</span></a></li>
-                <li><a href="/#team"><span>Команда</span></a></li>
-                <li><a href="/#contacts"><span>Контакты</span></a></li>
-            </ul>
-            <!--            <a href="#" class="btn-default btn btn-sm navbar-btn navbar-right"><span>Зарегистрироваться</span></a>-->
-        </div>
-    </div>
-    <div class="nav-bg dark"></div>
-</nav>
-<div id="wrap">
+{% extends 'base.html' %}
+{% load static %}
+{% load format %}
+{% block content %}
     <section id="gallery-carousel-3" class="pt-75 pb-50 dark text-center">
         <div class="container">
             <h2>Получи своё исцеление!</h2>
@@ -57,7 +11,8 @@
         <div class="container">
             <div class="row flex-md-vmiddle">
                 <div class="col-md-6 col-md-push-6 text-center">
-                    <img src="images/heal-1.png" srcset="images/heal-1-2x.png 2x" alt="illustration"
+                    <img src="{% static "images/heal-1.png" %}" srcset="{% static "images/heal-1-2x.png" %} 2x"
+                         alt="illustration"
                          class="screen">
                 </div>
                 <div class="col-md-6 col-md-pull-6" style="z-index: 10;">
@@ -65,13 +20,11 @@
                     <ul class="tabs-ul">
                         <li>Все болели в моей семье и я тоже</li>
                         <li>Не могут определить диагноз</li>
-                        <li>Страх что моя Жизнь будет недолгой</li>
-                        <li>Понимаю что причина моей болезни что то духовное</li>
+                        <li>Страх, что моя жизнь будет недолгой</li>
+                        <li>Понимаю, что причина моей болезни что-то духовное</li>
                         <li>Повторяющиеся болезни</li>
-                        <li>Ощущение проклятья на моем роду</li>
+                        <li>Ощущение проклятия на моём роду</li>
                     </ul>
-                    <!--                			<p class="mb-50" style="overflow: visible;">Все болели в моей семье и я тоже</p>-->
-                    <!--                			<a class="btn btn-primary" href="#"><span>More details</span><i class="icon-arrow-right icon-position-right"></i></a>-->
                 </div>
             </div>
         </div>
@@ -83,7 +36,8 @@
         <div class="container">
             <div class="row flex-md-vmiddle">
                 <div class="col-md-6 text-center">
-                    <img src="images/heal-2.png" srcset="images/heal-2-2x.png 2x" alt="illustration"
+                    <img src="{% static "images/heal-2.png" %}" srcset="{% static "images/heal-2-2x.png" %} 2x"
+                         alt="illustration"
                          class="screen">
                 </div>
                 <div class="col-md-6">
@@ -91,7 +45,7 @@
                     <ul class="tabs-ul">
                         <li>Консультация специалиста в выявлении духовной причины</li>
                         <li>Духовная диагностика</li>
-                        <li>Выявление какого ресурса не достаточно чтобы выздороветь</li>
+                        <li>Выявление недостающего ресурса для выздоровления</li>
                         <li>Молитва за больного</li>
                         <li>Возможно потребуется несколько сессий</li>
                     </ul>
@@ -106,7 +60,8 @@
         <div class="container">
             <div class="row flex-md-vmiddle">
                 <div class="col-md-6 col-md-push-6 text-center">
-                    <img src="images/heal-3.png" srcset="images/heal-3-2x.png 2x" alt="illustration"
+                    <img src="{% static "images/heal-3.png" %}" srcset="{% static "images/heal-3-2x.png" %} 2x"
+                         alt="illustration"
                          class="screen">
                 </div>
                 <div class="col-md-6 col-md-pull-6">
@@ -118,8 +73,8 @@
                     </ul>
                     <p>Мы не отрицаем современную медицину, и все традиционные лечения в
                         государственных учреждениях. Польза врачей имеет огромное значение для человечества.
-                        <br>Но мы так же верим в профессионализм духовной практики которая основана на христианских
-                        принципах согласно Священного писания. И благодаря благодати Божьей мы служим и молимся за
+                        <br>Но мы так же верим в профессионализм духовной практики, которая основана на христианских
+                        принципах согласно Священного писания. И благодаря благодати Божьей, мы служим и молимся за
                         больных людей и они получают свою долгожданное чудо в исцелении.</p>
                 </div>
             </div>
@@ -132,16 +87,17 @@
         <div class="container">
             <div class="row flex-md-vmiddle">
                 <div class="col-md-6 text-center">
-                    <img src="images/heal-4.png" srcset="images/heal-4-2x.png 2x" alt="illustration"
+                    <img src="{% static "images/heal-4.png" %}" srcset="{% static "images/heal-4-2x.png" %} 2x"
+                         alt="illustration"
                          class="screen">
                 </div>
                 <div class="col-md-6">
                     <h2 class="mb-30">Что для этого нужно от вас?</h2>
                     <ul class="tabs-ul">
                         <li>Ваше желание иметь положительный результат</li>
+                        <li>Выделить для этого своё время</li>
                         <li>Не важно к какой вы относитесь религии</li>
                         <li>Вы можете себя относить к атеистам и агностикам</li>
-                        <li>Выделить для этого своё время</li>
                     </ul>
                 </div>
             </div>
@@ -154,18 +110,22 @@
         <div class="container">
             <div class="row flex-md-vmiddle">
                 <div class="col-md-6 col-md-push-6 text-center">
-                    <img src="images/heal-5-2x.png" srcset="images/heal-5-4x.png 2x" alt="illustration"
+                    <img src="{% static "images/heal-5-2x.png" %}" srcset="{% static "images/heal-5-4x.png" %} 2x"
+                         alt="illustration"
                          class="screen">
                 </div>
                 <div class="col-md-6 col-md-pull-6">
                     <h2 class="mb-30">Кто проводит?</h2>
                     <div class="text-center">
-                        <img class="img-circle" src="images/pastor-1.jpg" srcset="images/pastor-1-2x.jpg 2x" alt="pastor">
+                        <img class="img-circle" src="{% static "images/pastor-1.jpg" %}"
+                             srcset="{% static "images/pastor-1-2x.jpg" %} 2x"
+                             alt="pastor">
                         <h4>Торопчин Артем</h4>
                         <p class="mb-30">Cвященник имеющий 15 летний опыт служения людям с разными заболеваниями</p>
                     </div>
                     <div class="text-center">
-                        <img class="img-circle" src="images/oleg-2.jpg" srcset="images/oleg-2-2x.jpg 2x" alt="oleg">
+                        <img class="img-circle" src="{% static "images/oleg-2.jpg" %}"
+                             srcset="{% static "images/oleg-2-2x.jpg" %} 2x" alt="oleg">
                         <h4>Милешин Олег</h4>
                         <p class="mb-50">Cвященник с даром исцелять больных по благодати Божьей</p>
                         <h4>Другие духовные эксперты</h4>
@@ -183,7 +143,8 @@
         <div class="container">
             <div class="row flex-md-vmiddle">
                 <div class="col-md-5 col-md-push-7">
-                    <img src="images/illustration-5.png" srcset="images/illustration-5@2x.png 2x" alt="illustration"
+                    <img src="{% static "images/illustration-5.png" %}"
+                         srcset="{% static "images/illustration-5@2x.png" %} 2x" alt="illustration"
                          class="screen mb-50">
                     <!--                    <h2 class="mb-50">5. Drop us a line</h2>-->
                     <!--                    <p>The given template is armed with the number of settings, so you can easily adapt it according to-->
@@ -194,16 +155,16 @@
                 <div class="col-md-6 col-md-pull-5">
                     <div class="padding-box light" style="background-color:#fff">
                         <h4 class="mb-25">Оставьте вашу заявку на консультацию и молитву за исцеление</h4>
-                        <form action="./scripts/request.php" class="contact_form" novalidate="novalidate"
-                              id="step-ltr-form-img-text-half-end-form">
+                        <form class="contact_form" novalidate="novalidate" id="form-healing">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Ваше имя" name="NAME">
+                                <input required type="text" class="form-control" placeholder="Ваше имя" name="NAME">
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Ваш емайл" name="EMAIL">
                             </div>
                             <div class="form-group">
-                                <input type="tel" class="form-control" placeholder="Ваш телефон" name="TEL">
+                                <input required type="tel" class="form-control" placeholder="Ваш телефон" name="TEL">
                                 <!--                                <textarea class="form-control" rows="6" placeholder="Your message or question"-->
                                 <!--                                          name="MESSAGE"></textarea>-->
                             </div>
@@ -219,157 +180,57 @@
         <div class="step-line-ltc step-line-half step-line-end"></div>
         <div class="bg"></div>
     </section>
-    <footer id="footer-list-form" class="dark pt-100 pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h4><strong>Главная</strong></h4>
-                            <ul class="text-list">
-                                <li>
-                                    <a href="/#tabs">Разделы</a>
-                                </li>
-                                <li>
-                                    <a href="/#reviews">Отзывы</a>
-                                </li>
-                                <li>
-                                    <a href="/#team">Команда</a>
-                                </li>
-                                <li>
-                                    <a href="/#contacts">Контакты</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-4">
-                            <h4><strong>Разделы</strong></h4>
-                            <ul class="text-list">
-                                <li>
-                                    <a href="/healing">Исцеление</a>
-                                </li>
-                                <li>
-                                    <a href="#">Социальная помощь</a>
-                                </li>
-                                <li>
-                                    <a href="#">Семейный психолог</a>
-                                </li>
-                                <li>
-                                    <a href="#">Финансовая помощь</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-4">
-                            <h4><strong>Дополнительно</strong></h4>
-                            <ul class="text-list">
-                                <li>
-                                    <a href="/about">О нас</a>
-                                </li>
-                            </ul>
-                        </div>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/heals.css" %}"/>
+{% endblock %}
+
+{% block modal %}
+    <div class="modal-container">
+        <section class="modal fade modal-confirm flex-center" id="popup-center-form" tabindex="-1" role="dialog"
+                 aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content text-center light">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
                     </div>
-                </div>
-                <div class="col-md-4 col-md-offset-1">
-                    <h3 class="mb-25">Обратная связь</h3>
-                    <form action="./scripts/request.php" class="contact_form" novalidate="novalidate"
-                          id="footer-list-form-form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваше имя" name="NAME">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Ваш емайл" name="EMAIL">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="4" placeholder="Ваше сообщение или вопрос"
-                                      name="MESSAGE"></textarea>
-                        </div>
-                        <button type="submit" data-loading-text="•••" data-complete-text="Completed!"
-                                data-reset-text="Try again later..." class="btn btn-block btn-primary">
-                            <span>Спросить</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <hr class="mt-50 mb-50">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>© info@electis.ru<br>All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-right">
-                    <ul class="social-list">
-                        <li>
-                            <a target="_blank" href="https://www.instagram.com/church_ng/"><i class="icon-instagram icon-size-m"></i></a>
-                        </li>
-                        <li>
-                            <a target="_blank" href="https://www.youtube.com/channel/UCAdwiYei9LfBtbQH3quITmA"><i class="icon-youtube icon-size-m"></i></a>
-                        </li>
-                        <li>
-                            <a target="_blank" href="https://vk.com/ngbarnaul"><i class="icon-vk icon-size-m"></i></a>
-                        </li>
-                        <li>
-                            <a target="_blank" href="https://ok.ru/ngbrn"><i class="icon-odnoklassniki icon-size-m"></i></a>
-                        </li>
-                        <li>
-                            <a target="_blank" href="https://www.facebook.com/ngbarnaul"><i class="icon-facebook icon-size-m"></i></a>
-                        </li>
-                    </ul>
+                    <div class="modal-body">
+                        <h2 class="mb-30">Молитва за своё исцеление</h2>
+                        <p class="mb-30 fs-125">Введите свои данные и мы вышлем вам молитву за исцеление, а так-же вы
+                            сможете записаться на молитву за вас</p>
+                        <form class="contact_form mb-0" id="form-healing-modal" novalidate="novalidate">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input required type="text" class="form-control" placeholder="Ваше имя" name="NAME">
+                            </div>
+                            <div class="form-group">
+                                <input required type="email" class="form-control" placeholder="Ваш емайл" name="EMAIL">
+                            </div>
+                            <div class="form-group">
+                                <input required type="tel" class="form-control" placeholder="Ваш телефон" name="TEL">
+                            </div>
+                            <button type="submit" data-loading-text="•••" data-complete-text="Completed!"
+                                    data-reset-text="Try again later..." class="btn btn-primary btn-block">
+                                <i class="icon-paper-plane icon-position-left icon-size-m"></i>
+                                <span>Получить молитву</span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="bg"></div>
                 </div>
             </div>
-        </div>
-        <div class="bg"></div>
-    </footer>
-</div>
-<footer></footer>
-<div class="modal-container">
-    <section class="modal fade modal-confirm flex-center" id="popup-center-form" tabindex="-1" role="dialog"
-             aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content text-center light">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body">
-                    <h2 class="mb-30">Молитва за своё исцеление</h2>
-                    <p class="mb-30 fs-125">Введите свои данные и мы вышлем вам молитву за исцеление, а так-же вы сможете записаться на молитвенную поддержку</p>
-                    <form action="./scripts/request.php" class="contact_form mb-0" id="popup-center-form-form"
-                          novalidate="novalidate">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваше имя" name="NAME">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Ваш емайл" name="EMAIL">
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Ваш телефон" name="TEL">
-                        </div>
-                        <button type="submit" data-loading-text="•••" data-complete-text="Completed!"
-                                data-reset-text="Try again later..." class="btn btn-primary btn-block">
-                            <i class="icon-paper-plane icon-position-left icon-size-m"></i>
-                            <span>Получить молитву</span>
-                        </button>
-                    </form>
-                </div>
-                <div class="bg"></div>
-            </div>
-        </div>
-    </section>
-</div>
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/jquery.validate.min.js"></script>
-<!--<script src="js/jquery.countdown.js"></script>-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCByts0vn5uAYat3aXEeK0yWL7txqfSMX8"></script>
-<script src="https://cdn.jsdelivr.net/jquery.goodshare.js/3.2.8/goodshare.min.js"></script>
-<script src="js/custom.js"></script>
-<script src="js/heals.js"></script>
-<script>
-    $(window).load(function () {
-        setTimeout(function () {
-            $("#popup-center-form").modal('show');
-        }, 30000);
-    });
-</script>
-</body>
-</html>
+        </section>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(window).load(function () {
+            setTimeout(function () {
+                $("#popup-center-form").modal('show');
+            }, 30000);
+        });
+    </script>
+{% endblock %}

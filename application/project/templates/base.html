@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ title }} - Церковь г.Барнаула</title>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
+    <meta name="keywords" content="христианство,церковь,барнаул"/>
+    <meta name="description" content="Добро пожаловать в христианскую церковь города Барнаула!"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="yandex-verification" content="99b607555362e57b" />
     <script src="{% static "js/webfont.js" %}"></script>
     <script src="{% static "js/fonts.js" %}"></script>
     <link rel="stylesheet" href="{% static "css/bootstrap.css" %}"/>
@@ -17,6 +18,8 @@
     <link rel="stylesheet" href="{% static "css/custom.css" %}"/>
     <link rel="stylesheet" href="{% static "css/index.css" %}"/>
     <link rel="stylesheet" href="{% static "css/preloader.css" %}"/>
+    {% block css %}
+    {% endblock %}
 </head>
 <body class="light-page">
 <div id="preloader">
@@ -105,13 +108,13 @@
                     <form class="contact_form" novalidate="novalidate" id="form-footer">
                         {% csrf_token %}
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваше имя" name="NAME">
+                            <input required type="text" class="form-control" placeholder="Ваше имя" name="NAME">
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Ваш емайл" name="EMAIL">
+                            <input required type="email" class="form-control" placeholder="Ваш емайл" name="EMAIL">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="4" placeholder="Ваше сообщение или вопрос"
+                            <textarea required class="form-control" rows="4" placeholder="Ваше сообщение или вопрос"
                                       name="MESSAGE"></textarea>
                         </div>
                         <button type="submit" data-loading-text="•••" data-complete-text="Отправлено!"
@@ -154,9 +157,8 @@
     </footer>
 </div>
 <footer></footer>
-<div class="modal-container">
-
-</div>
+{% block modal %}
+{% endblock %}
 <script src="{% static "js/jquery-2.1.4.min.js" %}"></script>
 <script src="{% static "js/bootstrap.min.js" %}"></script>
 <script src="{% static "js/owl.carousel.js" %}"></script>
@@ -165,6 +167,8 @@
 <script src="{% static "js/jquery.countdown.js" %}"></script>
 <script src="{% static "js/custom.js" %}"></script>
 <script src="{% static "js/index.js" %}"></script>
+{% block js %}
+{% endblock %}
 <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCByts0vn5uAYat3aXEeK0yWL7txqfSMX8"></script>-->
 <!--<script src="https://cdn.jsdelivr.net/jquery.goodshare.js/3.2.8/goodshare.min.js"></script>-->
 </body>
