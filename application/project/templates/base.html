@@ -79,26 +79,21 @@
                         <div class="col-sm-4">
                             <h4><strong>Разделы</strong></h4>
                             <ul class="text-list">
+                                {% for card in cards %}
                                 <li>
-                                    <a href="/healing">Исцеление</a>
+                                    <a href="/{{ card.url }}">{{ card.name }}</a>
                                 </li>
-                                <li>
-                                    <a href="#">Социальная помощь</a>
-                                </li>
-                                <li>
-                                    <a href="#">Семейный психолог</a>
-                                </li>
-                                <li>
-                                    <a href="#">Финансовая помощь</a>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <div class="col-sm-4">
                             <h4><strong>Дополнительно</strong></h4>
                             <ul class="text-list">
+                                {% for tab in tabs %}
                                 <li>
-                                    <a href="/about">О нас</a>
+                                    <a href="/{{ tab.url }}">{{ tab.name }}</a>
                                 </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>

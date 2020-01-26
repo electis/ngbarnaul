@@ -8,7 +8,9 @@ from django.conf import settings
 
 from apps.core import models
 
-card_urls = ('healing', 'social', 'psycholog', 'finance')
+# card_urls = ('healing', 'social', 'psycholog', 'finance')
+card_urls = models.Card.objects.values_list('url', flat=True)
+tab_urls = models.Tab.objects.values_list('url', flat=True)
 
 
 class Index(View):
@@ -17,15 +19,8 @@ class Index(View):
             'title': 'Главная',
             'ministers': models.Minister.objects.all(),
             'cards': models.Card.objects.all(),
+            'tabs': models.Tab.objects.all(),
         }
-        # context['settings'] = models.Setting.objects.first()
-        # context['contact'] = models.Contact.objects.first()
-        # context['navbar'] = models.Navbar.objects.all()
-        # context['banner'] = models.Banner.objects.all()
-        # context['counter'] = models.Counter.objects.all()
-        # context['card'] = models.Card.objects.all()
-        # context['review'] = models.Review.objects.all()
-        # context['team'] = models.Team.objects.all()
         return render(request, 'index.html', context)
 
 
@@ -35,18 +30,24 @@ class Card(View):
         if not card:
             return HttpResponseRedirect('/')
         context = {
-            'title': card.text_top,
-            'ministers': models.Minister.objects.all(),
+            'title': card.name,
+            'cards': models.Card.objects.all(),
+            'tabs': models.Tab.objects.all(),
         }
-        # context['settings'] = models.Setting.objects.first()
-        # context['contact'] = models.Contact.objects.first()
-        # context['navbar'] = models.Navbar.objects.all()
-        # context['banner'] = models.Banner.objects.all()
-        # context['counter'] = models.Counter.objects.all()
-        # context['card'] = models.Card.objects.all()
-        # context['review'] = models.Review.objects.all()
-        # context['team'] = models.Team.objects.all()
         return render(request, f'{card.url}.html', context)
+
+
+class Tab(View):
+    def get(self, request):
+        tab = models.Tab.objects.filter(url=request.path.replace('/', '')).first()
+        if not tab:
+            return HttpResponseRedirect('/')
+        context = {
+            'title': tab.name,
+            'cards': models.Card.objects.all(),
+            'tabs': models.Tab.objects.all(),
+        }
+        return render(request, f'{tab.url}.html', context)
 
 
 class Ajax(View):
