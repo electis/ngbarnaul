@@ -1,3 +1,9 @@
+@media (max-width: 350px) {
+    .card {
+        font-size: 14px;
+    }
+}
+
 #nav-center-logo-menu-btn .nav-bg {
     opacity: 0.7;
 }
