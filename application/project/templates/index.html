@@ -139,33 +139,21 @@
                 <div class="col-md-6">
                     <h3 class="mb-25">Социальные сети</h3>
                     <ul class="social-list mb-25">
-                        <li>
-                            <a href="#"><i class="icon-twitter icon-size-l icon-color"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon-facebook icon-size-l icon-color"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon-linkedin icon-size-l icon-color"></i></a>
-                        </li>
-                        <li class="">
-                            <a href="#"><i class="icon-google-plus icon-size-l icon-color"></i></a>
-                        </li>
-                        <li class="">
-                            <a href="#"><i class="icon-dribbble icon-size-l icon-color"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon-behance icon-size-l icon-color"></i></a>
-                        </li>
+                        {% for social in settings.get_social %}
+                            <li>
+                                <a href="{{ social.0 }}" target="_blank">
+                                    <i class="{{ social.1 }} icon-size-l"></i></a>
+                            </li>
+                        {% endfor %}
                     </ul>
                     <p class="desc-text">Подписывайтесь на наши страницы в соцсетях.
-{#                        <br>News, updates and always fresh information waiting for you.#}
+                        {#                        <br>News, updates and always fresh information waiting for you.#}
                     </p>
                 </div>
                 <div class="col-md-6">
                     <h3 class="mb-25">Подписка</h3>
-                    <form class="contact_form form-inline form-flex"
-                          novalidate="novalidate" id="subscribe-social-field-form">
+                    <form class="contact_form form-inline form-flex" novalidate="novalidate" id="form-subscribe">
+                        {% csrf_token %}
                         <div class="form-group">
                             <input type="email" class="spr-email-field form-control" placeholder="Введите ваш email"
                                    name="EMAIL" size="10">
@@ -175,7 +163,8 @@
                                 class="spr-option-textedit-link">Подписаться</span><i
                                 class="icon-position-right icon-arrow-right icon-size-m"></i></button>
                     </form>
-                    <p class="desc-text">Мы рассылаем только актуальную и важную для вас информацию без спама и надоедания.</p>
+                    <p class="desc-text">Мы рассылаем только актуальную и важную для вас информацию без спама и
+                        надоедания.</p>
                 </div>
             </div>
         </div>
@@ -198,34 +187,16 @@
                         {% for minister in ministers %}
                             <div class="card item gallery-style-4">
                                 <div class="card-block-hover">
-                                    <div class="card-img-overlay-center card-img-overlay-bg">
-                                        <ul class="social-list">
-                                            {% if minister.social_page %}
-                                                <li><a href="{{ minister.social_page }}" target="_blank"><i
-                                                        class="icon-link2 icon-size-m"></i></a></li>
-                                            {% endif %}
-                                            {% if minister.social_vk %}
-                                                <li><a href="{{ minister.social_vk }}" target="_blank"><i
-                                                        class="icon-vk icon-size-m"></i></a></li>
-                                            {% endif %}
-                                            {% if minister.social_fb %}
-                                                <li><a href="{{ minister.social_fb }}" target="_blank"><i
-                                                        class="icon-facebook icon-size-m"></i></a></li>
-                                            {% endif %}
-                                            {% if minister.social_ok %}
-                                                <li><a href="{{ minister.social_ok }}" target="_blank"><i
-                                                        class="icon-odnoklassniki icon-size-m"></i></a></li>
-                                            {% endif %}
-                                            {% if minister.social_inst %}
-                                                <li><a href="{{ minister.social_inst }}" target="_blank"><i
-                                                        class="icon-instagram icon-size-m"></i></a></li>
-                                            {% endif %}
-                                            {% if minister.social_youtube %}
-                                                <li><a href="{{ minister.social_youtube }}" target="_blank"><i
-                                                        class="icon-youtube22 icon-size-m"></i></a></li>
-                                            {% endif %}
-                                        </ul>
-                                    </div>
+                                    {% if minister.social %}
+                                        <div class="card-img-overlay-center card-img-overlay-bg">
+                                            <ul class="social-list">
+                                                {% for social in minister.get_social %}
+                                                    <li><a href="{{ social.0 }}" target="_blank"><i
+                                                            class="{{ social.1 }} icon-size-m"></i></a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
                                     <img class="img-circle" src="{{ minister.image.url }}"
                                          srcset="{{ minister.image2x.url }} 2x"
                                          alt="{{ minister.short_name }}">
@@ -240,48 +211,6 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        <!--                        <div class="card item gallery-style-4">-->
-                        <!--                            <div class="card-block-hover">-->
-                        <!--                                <div class="card-img-overlay-center card-img-overlay-bg">-->
-                        <!--                                    <ul class="social-list">-->
-                        <!--                                        <li><a href="#"><i class="icon-twitter icon-size-m"></i></a></li>-->
-                        <!--                                        <li><a href="#"><i class="icon-facebook icon-size-m"></i></a></li>-->
-                        <!--                                        <li><a href="#"><i class="icon-linkedin icon-size-m"></i></a></li>-->
-                        <!--                                        <li><a href="#"><i class="icon-google-plus icon-size-m"></i></a></li>-->
-                        <!--                                    </ul>-->
-                        <!--                                </div>-->
-                        <!--                                <img class="img-circle" src="images/s-evg_sel.jpg" srcset="images/s-evg_sel.jpg 2x"-->
-                        <!--                                     alt="team">-->
-                        <!--                            </div>-->
-                        <!--                            <div class="card-block">-->
-                        <!--                                <h3 class="mt-20 mb-0"><strong>Евгения Селиванова</strong></h3>-->
-                        <!--                                <h4>Организатор досуга церкви</h4>-->
-                        <!--                                <p>Ее способности позволяют организовывать невероятные мероприятия которые заряжают-->
-                        <!--                                    людей на большие победы и подъем позитивных эмоций.</p>-->
-                        <!--                                <a href="tel:+79132550523">8 (913) 255-05-23 Евгения</a>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                        <!--                        <div class="card item gallery-style-4">-->
-                        <!--                            <div class="card-block-hover">-->
-                        <!--                                <div class="card-img-overlay-center card-img-overlay-bg">-->
-                        <!--                                    <ul class="social-list">-->
-                        <!--                                        <li><a href="#"><i class="icon-twitter icon-size-m"></i></a></li>-->
-                        <!--                                        <li><a href="#"><i class="icon-facebook icon-size-m"></i></a></li>-->
-                        <!--                                        <li><a href="#"><i class="icon-linkedin icon-size-m"></i></a></li>-->
-                        <!--                                        <li><a href="#"><i class="icon-google-plus icon-size-m"></i></a></li>-->
-                        <!--                                    </ul>-->
-                        <!--                                </div>-->
-                        <!--                                <img class="img-circle" src="images/s-aleks.jpeg" srcset="images/s-aleks.jpeg 2x"-->
-                        <!--                                     alt="team">-->
-                        <!--                            </div>-->
-                        <!--                            <div class="card-block">-->
-                        <!--                                <h3 class="mt-20 mb-0"><strong>Алексей Спирков</strong></h3>-->
-                        <!--                                <h4>Руководитель социального проекта «День милосердия»</h4>-->
-                        <!--                                <p>Не оставит не одного человека без продуктов и одежды. Доброй души чуткого внимания к-->
-                        <!--                                    людям служитель.</p>-->
-                        <!--                                <a href="tel:+79835560830">8 (983) 556-08-30 Алексей</a>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
                     </div>
                 </div>
             </div>

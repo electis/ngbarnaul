@@ -147,8 +147,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     $('#' + id).find('[type=submit]').button('complete').attr('type', 'button').css('background-color', '#337ab7').css('cursor', 'default');
                     // true; //css('background-color', 'red');
                 },
-                error: function () {
+                error: function (response) {
+                    // if (response.status === 400) {alert(response.responseText)};
                     $('#' + id).find('[type=submit]').button('reset');
+                    alert(response.responseText);
                 }
             });
         } else {

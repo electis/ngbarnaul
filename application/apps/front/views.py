@@ -5,6 +5,7 @@ from django.views import View
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.core.mail.message import EmailMultiAlternatives
 from django.conf import settings
+from django.core.validators import validate_email
 
 from apps.core import models
 
@@ -17,9 +18,10 @@ class Index(View):
     def get(self, request):
         context = {
             'title': 'Главная',
-            'ministers': models.Minister.objects.all(),
+            'ministers': models.Minister.objects.filter(active=True),
             'cards': models.Card.objects.all(),
             'tabs': models.Tab.objects.all(),
+            'settings': models.Setting.get_solo(),
         }
         return render(request, 'index.html', context)
 
@@ -51,8 +53,12 @@ class Tab(View):
 
 
 class Ajax(View):
+    status = 200
+    text = 'OK'
+
     def post(self, request):
         methods = {
+            'form-subscribe': 'Главная - подписка',
             'form-footer': 'Обратная связь',
             'form-healing': 'Исцеление - консультация',
             'form-healing-modal': 'Исцеление - молитва',
@@ -62,23 +68,38 @@ class Ajax(View):
             'form-finance': 'Финансы - записаться',
             'form-finance-modal': 'Финансы - книга',
         }
-        id = request.POST.get('id')
-        if id in methods.keys():
+        method = request.POST.get('id')
+        if method in methods.keys():
             try:
-                data = json.loads(request.POST['data'])
+                data_list = json.loads(request.POST['data'])
+                data_dict = {item['name_attr'].lower(): item.get('value')
+                             for item in data_list if item.get('name_attr').lower() in models.SendedForm.fields}
             except:
-                return HttpResponse(status=400)
-            email = ['andrey@ngbarnaul.ru']
-            print('Send email', methods[id], data)
-            html = str('<br>'.join([f"{d.get('name')}: {d.get('value')}" for d in data]))
-            mail = EmailMultiAlternatives(methods[id], html, settings.EMAIL_HOST_USER, email)
-            mail.content_subtype = "html"
-            try:
-                mail.send(fail_silently=False)
-            except Exception as Ex:
-                print(Ex)
-                return HttpResponse(status=400)
-            return HttpResponse()
+                self.text = 'Ошибка в данных, сообщите администратору'
+                self.status = 415
+            else:
+                if method in models.Subscriber.methods:
+                    try:
+                        validate_email(data_dict.get('email'))
+                    except:
+                        self.text = 'Неправильный Email'
+                        self.status = 415
+                    else:
+                        models.Subscriber.objects.get_or_create(method=method, email=data_dict.get('email'))
+                if method in models.SendedForm.methods:
+                    sended_form = models.SendedForm.objects.create(method=method, **data_dict)
+                    html = str('<br>'.join([f"{d.get('name')}: {d.get('value')}" for d in data_list]))
+                    mail = EmailMultiAlternatives(methods[method], html, settings.EMAIL_HOST_USER, models.SendedForm.emails)
+                    mail.content_subtype = "html"
+                    try:
+                        mail.send(fail_silently=False)
+                    except Exception as Ex:
+                        self.text = f'Ошибка отправки сообщения {Ex}'
+                        self.status = 404
+                    else:
+                        sended_form.sended = True
+                        sended_form.save()
         else:
-            print('Method unknown: ', id)
-        return HttpResponse(status=400)
+            self.text = f'Method unknown: {method}'
+            self.status = 405
+        return HttpResponse(status=self.status, content=self.text)
