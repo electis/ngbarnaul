@@ -1580,7 +1580,7 @@ nav.navbar .btn-lg .icon-position-right {
 
 .card-block-hover {
     position: relative;
-    margin: 1px;
+    /*margin: 1px;*/
 }
 
 .card-block-hover>img {

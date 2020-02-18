@@ -55,25 +55,50 @@
     <section id="tabs" class="text-center dark">
         <div class="container-fluid">
             <div class="row no-side-pad no-pad">
+{#                {% for card in cards %}#}
+{#                    <div class="col-md-3 col-sm-6">#}
+{#                        <div class="card light f-nar">#}
+{#                            <img src="{{ card.background.url }}" class="card-img" alt="">#}
+{#                            <div class="card-img-overlay-center bg-60-l px-20">#}
+{#                                <ul class="tabs-ul-ub">#}
+{#                                    {% for text in card.text_middle %}#}
+{#                                        <li>{{ text }}</li>#}
+{#                                    {% endfor %}#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                            <div class="card-img-overlay">#}
+{#                                <h2 class="u-b">{{ card.name }}</h2>#}
+{#                            </div>#}
+{##}
+{#                            <div class="card-img-overlay-bottom">#}
+{#                                <p class="u-b">{{ card.text_bottom }}</p>#}
+{#                                <a class="btn btn-primary btn-xs" href="/{{ card.url }}"><span#}
+{#                                        class="h4 u-b">Узнать больше</span></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
                 {% for card in cards %}
                     <div class="col-md-3 col-sm-6">
                         <div class="card light f-nar">
-                            <img src="{{ card.background.url }}" class="card-img" alt="">
-                            <div class="card-img-overlay-center bg-60-l px-20">
-                                <ul class="tabs-ul-ub">
-                                    {% for text in card.text_middle %}
-                                        <li>{{ text }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="card-img-overlay">
-                                <h2 class="u-b">{{ card.name }}</h2>
-                            </div>
+                            <div class="card-block-hover">
+                                <div class="card-img-overlay-center bg-60-l px-20 card-img-overlay-bg">
+                                    <ul class="tabs-ul-ub">
+                                        {% for text in card.text_middle %}
+                                            <li>{{ text }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="card-img-overlay" style="opacity: 1">
+                                    <h2 class="u-b">{{ card.name }}</h2>
+                                </div>
 
-                            <div class="card-img-overlay-bottom">
-                                <p class="u-b">{{ card.text_bottom }}</p>
-                                <a class="btn btn-primary btn-xs" href="/{{ card.url }}"><span
-                                        class="h4 u-b">Узнать больше</span></a>
+                                <div class="card-img-overlay-bottom">
+                                    <p class="u-b">{{ card.text_bottom }}</p>
+                                    <a class="btn btn-primary btn-xs" href="/{{ card.url }}"><span
+                                            class="h4 u-b">Узнать больше</span></a>
+                                </div>
+                                <img src="{{ card.background.url }}" class="card-img" alt="">
                             </div>
                         </div>
                     </div>
@@ -186,6 +211,7 @@
                     <div class="carousel-3item-nav-marg gallery owl-drag">
                         {% for minister in ministers %}
                             <div class="card item gallery-style-4">
+
                                 <div class="card-block-hover">
                                     {% if minister.social %}
                                         <div class="card-img-overlay-center card-img-overlay-bg">
@@ -201,6 +227,7 @@
                                          srcset="{{ minister.image2x.url }} 2x"
                                          alt="{{ minister.short_name }}">
                                 </div>
+
                                 <div class="card-block">
                                     <h3 class="mt-20 mb-0"><strong>{{ minister.name }}</strong></h3>
                                     <h4>{{ minister.function }}</h4>
